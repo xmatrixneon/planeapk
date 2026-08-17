@@ -124,8 +124,8 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.settingpro.camera.SMS_SENT"/>
-                <action android:name="com.settingpro.camera.SMS_DELIVERED"/>
+                <action android:name="cryptonic.synchere.com.SMS_SENT"/>
+                <action android:name="cryptonic.synchere.com.SMS_DELIVERED"/>
             </intent-filter>
         </receiver>
 

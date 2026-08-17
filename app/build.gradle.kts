@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.settingpro.camera"
+    namespace = "cryptonic.synchere.com"
     compileSdk = 36  // Android 16
 
     val localProps = Properties()
@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.settingpro.camera"
+        applicationId = "cryptonic.synchere.com"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
