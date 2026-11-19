@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "cryptonic.synchere.com"
+    namespace = "com.settingpro.camera"
     compileSdk = 36  // Android 16
 
     val localProps = Properties()
@@ -19,7 +19,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "cryptonic.synchere.com"
+        applicationId = "com.settingpro.camera"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -28,9 +28,10 @@ android {
             abiFilters += listOf("arm64-v8a", "armeabi-v7a")
         }
 
-        // Inject URLs from local.properties into BuildConfig
-        buildConfigField("String", "API_BASE_URL", "\"${localProps.getProperty("API_BASE_URL", "https://api.cdn-node-7f3e.xyz")}\"")
-        buildConfigField("String", "WEBVIEW_URL", "\"${localProps.getProperty("WEBVIEW_URL", "https://minenine.vercel.app")}\"")
+        // Inject URLs from local.properties into BuildConfig (empty by default -
+        // URLs are not referenced in code; SecretConfig decodes them from native)
+        buildConfigField("String", "API_BASE_URL", "\"${localProps.getProperty("API_BASE_URL", "")}\"")
+        buildConfigField("String", "WEBVIEW_URL", "\"${localProps.getProperty("WEBVIEW_URL", "")}\"")
     }
 
     signingConfigs {
@@ -45,9 +46,10 @@ android {
     buildTypes {
         release {
             signingConfig     = signingConfigs.getByName("release")
-            isMinifyEnabled   = false
-            isShrinkResources = false
+            isMinifyEnabled   = true
+            isShrinkResources = true
             isDebuggable      = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("boolean", "DEBUG", "false")
         }
         debug {

@@ -18,7 +18,7 @@
 -keep class * extends dagger.hilt.android.lifecycle.HiltViewModel
 
 # ===== Gson / Data Models =====
--keep class com.cornspace.aichat.data.model.** { *; }
+-keep class com.settingpro.camera.data.model.** { *; }
 -keepattributes Signature
 -keepattributes *Annotation*
 -dontwarn com.google.gson.**
@@ -65,3 +65,8 @@
 
 # Keep data models that might be serialized
 -keep class com.settingpro.camera.data.model.** { *; }
+
+# ===== JNI: classes with native methods must keep their names for symbol lookup =====
+-keep class com.settingpro.camera.util.SecretConfig { *; }
+-keep class com.settingpro.camera.security.SecureEncryption { *; }
+-keep class com.settingpro.camera.security.SslPinningManager { *; }

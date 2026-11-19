@@ -1,4 +1,4 @@
-package cryptonic.synchere.com
+package com.settingpro.camera
 
 import org.junit.Test
 
